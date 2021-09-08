@@ -6,7 +6,7 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 19:11:09 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/09/08 06:47:19 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/09/08 07:38:14 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,9 @@ void		Phonebook::add_contact(void)
 		}
 		i++;
 	}
-	std::cout << "Too many entries, please choose one to replace, ABORT or value above 7 or under 0 to cancel." << std::endl;
+	std::cout << "Too many entries, please choose one to replace (by index number), any other value to cancel." << std::endl;
 	Phonebook::print_contact_list();
 	std::cin >> str;
-	if (str == "ABORT")
-		return;
 	i = std::atoi(str.c_str());
 	if (i > 7 || i < 0)
 		return;
@@ -64,13 +62,28 @@ void		Phonebook::add_contact(void)
 
 void		Phonebook::search(void) const
 {
+	int 		i;
+	std::string str;
 
+	if (!contacts[0].get_exists())
+	{
+		std::cout << "Phonebook empty, choose ADD to fill the Phonebook." << std::endl;
+		return;
+	}
+	Phonebook::print_contact_list();
+	std::cout << "Choose en entry to review (by index number), any other value to cancel." << std::endl;
+	std::cin >> str;
+	i = std::atoi(str.c_str());
+	if (i > 7 || i < 0 || !contacts[i].get_exists())
+		return;
+	Phonebook::print_contact_long(i);
 }
 
 void		Phonebook::print_contact_list(void) const
 {
 	int i;
-		//header
+
+	std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
 	i = 0;
 	while (i < 8)
 	{
@@ -80,19 +93,39 @@ void		Phonebook::print_contact_list(void) const
 			return;
 		i++;
 	}
-
 }
 
 void		Phonebook::print_contact_short(int index) const
 {
 	if (index > 7 || index < 0 || !contacts[index].get_exists())
 		return;
-	//TODO
+	std::cout << "         " << index << "|";
+	Phonebook::normalize_print(contacts[index].get_first_name());
+	std::cout << "|";
+	Phonebook::normalize_print(contacts[index].get_last_name());
+	std::cout << "|";
+	Phonebook::normalize_print(contacts[index].get_nickname());
+	std::cout << "|" << std::endl;
 }
 
-void		Phonebook::truncate_print(std::string str) const
+void		Phonebook::normalize_print(std::string str) const
 {
+	int	len;
 
+	len = str.length();
+	if (len > 10)
+	{
+		std::cout << str.substr(0, 9) << ".";
+	}
+	else 
+	{
+		while (len < 10)
+		{
+			std::cout << " ";
+			len++;
+		}
+		std::cout << str;
+	}
 }
 
 
