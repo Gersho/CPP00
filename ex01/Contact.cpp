@@ -6,8 +6,11 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 23:35:59 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/09/07 23:36:12 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/09/08 04:52:04 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+
+
+//mettre exists a 0 dans le constructeur

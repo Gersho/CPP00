@@ -6,12 +6,12 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 23:04:07 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/09/08 00:36:21 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/09/08 04:42:19 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
-#include <iostream> //cin/cout
+#include <iostream>
 #include <string>
 //#include <cstdlib> //exit
 
@@ -36,11 +36,11 @@ int		main(void)
 		//std::cout << "input received: " << input << std::endl;
 		if (input == "ADD")
 		{
-			std::cout << "(asked ADD)" << std::endl;
+			//std::cout << "(asked ADD)" << std::endl;
 		}
 		else if (input == "SEARCH")
 		{
-			std::cout << "(asked SEARCH)" << std::endl;
+			//std::cout << "(asked SEARCH)" << std::endl;
 		}
 		else if (input == "EXIT")
 		{
