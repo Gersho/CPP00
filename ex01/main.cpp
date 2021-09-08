@@ -6,15 +6,13 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 23:04:07 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/09/08 04:42:19 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/09/08 06:49:27 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include <iostream>
 #include <string>
-//#include <cstdlib> //exit
-
 
 std::string	main_menu(void)
 {
@@ -28,19 +26,19 @@ std::string	main_menu(void)
 int		main(void)
 {
 	std::string input;
+	Phonebook book;
 
 	std::cout << "Welcome to Phonebook." << std::endl;
 	while (1)
 	{
 		input = main_menu();
-		//std::cout << "input received: " << input << std::endl;
 		if (input == "ADD")
 		{
-			//std::cout << "(asked ADD)" << std::endl;
+			book.add_contact();
 		}
 		else if (input == "SEARCH")
 		{
-			//std::cout << "(asked SEARCH)" << std::endl;
+			book.search();
 		}
 		else if (input == "EXIT")
 		{

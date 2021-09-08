@@ -6,7 +6,7 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 23:35:52 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/09/08 04:51:50 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/09/08 05:57:25 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ class	Contact
 	void		set_last_name(std::string last_name);
 	std::string get_nickname(void)const;
 	void		set_nickname(std::string nickname);
-	std::string get_phonenumber(void)const;
-	void		set_phonenumber(std::string phonenumber);
+	std::string get_phone_number(void)const;
+	void		set_phone_number(std::string phone_number);
 	std::string get_dark_secret(void)const;
 	void		set_dark_secret(std::string dark_secret);
 	bool		get_exists(void)const;
-	bool		set_exists(bool exists);
+	void		set_exists(void);
 
 	private:
 	std::string _first_name;
 	std::string _last_name;
 	std::string _nickname;
-	std::string _phonenumber;
+	std::string _phone_number;
 	std::string _dark_secret;
 	bool		_exists;
 };
