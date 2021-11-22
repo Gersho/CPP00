@@ -6,7 +6,7 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:55:11 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/09/07 18:48:34 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/11/22 12:55:08 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int main(int ac, char** av)
 			j++;
 		}
 		i++;
+		if (i < ac)
+			std::cout << " ";
 	}
 	std::cout << std::endl;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 19:11:09 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/09/08 07:38:14 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/11/22 16:20:17 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
+#include <cctype>
 
 Phonebook::Phonebook(void)
 {
@@ -73,6 +75,8 @@ void		Phonebook::search(void) const
 	Phonebook::print_contact_list();
 	std::cout << "Choose en entry to review (by index number), any other value to cancel." << std::endl;
 	std::cin >> str;
+	if (!isdigit(str[0]))
+		return;
 	i = std::atoi(str.c_str());
 	if (i > 7 || i < 0 || !contacts[i].get_exists())
 		return;
@@ -83,7 +87,7 @@ void		Phonebook::print_contact_list(void) const
 {
 	int i;
 
-	std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
+	std::cout << "     Index|First Name| Last Name|  Nickname|" << std::endl;
 	i = 0;
 	while (i < 8)
 	{
@@ -99,7 +103,7 @@ void		Phonebook::print_contact_short(int index) const
 {
 	if (index > 7 || index < 0 || !contacts[index].get_exists())
 		return;
-	std::cout << "         " << index << "|";
+	std::cout << std::setw(10) << std::setfill(' ') << index << "|";
 	Phonebook::normalize_print(contacts[index].get_first_name());
 	std::cout << "|";
 	Phonebook::normalize_print(contacts[index].get_last_name());
@@ -114,18 +118,9 @@ void		Phonebook::normalize_print(std::string str) const
 
 	len = str.length();
 	if (len > 10)
-	{
 		std::cout << str.substr(0, 9) << ".";
-	}
 	else 
-	{
-		while (len < 10)
-		{
-			std::cout << " ";
-			len++;
-		}
-		std::cout << str;
-	}
+		std::cout << std::setw(10) << std::setfill(' ') << str;
 }
 
 
