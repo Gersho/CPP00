@@ -1,9 +1,9 @@
 SRCS		= Contact.cpp Phonebook.cpp main.cpp
 
 
-OBJS			= $(SRCS:.cpp=.o)
+OBJS			= $(addprefix objs/, $(SRCS:.cpp=.o))
 
-DEPS			= $(SRCS:.cpp=.d)
+DEPS			= $(addprefix deps/, $(SRCS:.cpp=.d))
 
 NAME			= phonebook
 CC				= clang++
@@ -11,10 +11,12 @@ CFLAGS			= --std=c++98 -Wall -Wextra -Werror
 
 all:			$(NAME)
 
-%.d:			%.cpp
+deps/%.d:			%.cpp
+				@mkdir -p $(dir $@)
 				$(CC) $(CFLAGS) -MM -MG -MT $(@:%.d=%.o) $< -o $@
 
-%.o: 			%.cpp	%.d
+objs/%.o: 			%.cpp	deps/%.d
+				@mkdir -p $(dir $@)
 				$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):		$(OBJS)
@@ -23,6 +25,7 @@ $(NAME):		$(OBJS)
 clean:			
 				$(RM) $(OBJS)
 				$(RM) $(DEPS)
+				rm -rf objs/ deps/
 
 fclean:			clean
 				$(RM) $(NAME)
