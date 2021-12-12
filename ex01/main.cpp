@@ -6,22 +6,13 @@
 /*   By: kzennoun <kzennoun@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 23:04:07 by kzennoun          #+#    #+#             */
-/*   Updated: 2021/09/08 06:49:27 by kzennoun         ###   ########lyon.fr   */
+/*   Updated: 2021/12/12 11:59:09 by kzennoun         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 #include <iostream>
 #include <string>
-
-std::string	main_menu(void)
-{
-	std::string	input;
-
-	std::cout << "Available options: ADD, SEARCH, EXIT" << std::endl;
-	std::cin >> input;
-	return (input);
-}
 
 int		main(void)
 {
@@ -31,7 +22,10 @@ int		main(void)
 	std::cout << "Welcome to Phonebook." << std::endl;
 	while (1)
 	{
-		input = main_menu();
+		std::cout << "Available options: ADD, SEARCH, EXIT" << std::endl;
+		std::cin >> input;
+		if (std::cin.eof())
+			input = "EXIT";
 		if (input == "ADD")
 		{
 			book.add_contact();
